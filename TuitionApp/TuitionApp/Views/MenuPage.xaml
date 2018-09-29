@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TuitionApp.Views.MenuPage"
+             xmlns:vm="clr-namespace:TuitionApp.ViewModels"
+             xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
+             Title="{Binding Title}">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <!--Page Level Resources: Compatibile with Xamarin Live Player -->
+            <Color x:Key="Primary">#2196F3</Color>
+            <Color x:Key="Accent">#343737</Color>
+            <Color x:Key="LightTextColor">#999999</Color>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <StackLayout BackgroundColor="{StaticResource Accent}" VerticalOptions="FillAndExpand" HorizontalOptions="Fill">
+            <StackLayout Orientation="Horizontal" HorizontalOptions="StartAndExpand" VerticalOptions="Center">
+                <ContentView Padding="0,8,0,10" VerticalOptions="FillAndExpand">
+                    <Image Source="xamarin_logo.png" VerticalOptions="Center" HeightRequest="48" />
+                </ContentView>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" Padding="10,0,10,10" VerticalOptions="CenterAndExpand">
+                <!--<controls:CircleImage Source="http://www.beckymonsonskincare.com/wp-content/uploads/2013/08/photodune-4276142-smiling-portraits-xl_031.jpg" Aspect="AspectFit">
+                    <controls:CircleImage.WidthRequest>
+                        <OnPlatform x:TypeArguments="x:Double">
+                            <On Platform="Android, iOS">55</On>
+                            <On Platform="WinPhone">75</On>
+                        </OnPlatform>
+                    </controls:CircleImage.WidthRequest>
+                    <controls:CircleImage.HeightRequest>
+                        <OnPlatform x:TypeArguments="x:Double">
+                            <On Platform="Android, iOS">55</On>
+                            <On Platform="WinPhone">75</On>
+                        </OnPlatform>
+                    </controls:CircleImage.HeightRequest>
+                </controls:CircleImage>-->
+                <Label VerticalOptions="CenterAndExpand">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Daniel Parker&#x0a;" FontSize="Medium" ForegroundColor="AliceBlue" />
+                            <Span Text="MYR 32.80" FontSize="Small" ForegroundColor="LimeGreen" />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+            </StackLayout>
+        </StackLayout>
+        <StackLayout Orientation="Vertical" Padding="0,0,0,10" Grid.Row="1">
+            <ListView x:Name="mainMenuListView" VerticalOptions="FillAndExpand" SeparatorVisibility="Default" ItemsSource="{Binding MainMenu}" ItemTapped="OnItemTapped">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid Padding="16,10,16,10">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="32" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="40" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Label Grid.Column="0" Text="{Binding Icon}" FontAttributes="Bold" FontFamily="FontAwesome" VerticalOptions="Center" />
+                                <Label Grid.Column="1" Text="{Binding MenuName}" FontAttributes="Bold" />
+                                <Label Grid.Column="2" Text="{Binding Count}" FontAttributes="Bold" HorizontalOptions="EndAndExpand" />
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Button Margin="10,0,10,0" Text="Sign Out" BackgroundColor="Gray" TextColor="White" />
+        </StackLayout>
+    </Grid>
+</ContentPage>
